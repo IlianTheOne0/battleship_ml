@@ -1,0 +1,8 @@
+pygame-ce>=2.5
+numpy>=1.26
+pytest>=7.4
+opencv-python>=4.9
+mediapipe==0.10.35
+Pillow>=10.0
+scikit-learn>=1.4
+tqdm>=4.66
