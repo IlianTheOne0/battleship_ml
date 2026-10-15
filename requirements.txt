@@ -6,3 +6,7 @@ mediapipe==0.10.35
 Pillow>=10.0
 scikit-learn>=1.4
 tqdm>=4.66
+pyttsx3==2.99
+nltk>=3.8
+vosk>=0.3.45
+sounddevice>=0.4.6

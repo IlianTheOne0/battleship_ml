@@ -60,7 +60,7 @@ def main() -> int:
                 logger.warning("The frame was not received")
                 break
 
-            frame = cv2.flip(frame, 1)  # дзеркалимо для зручності
+            frame = cv2.flip(frame, 1)
             result = pre.process(frame)
 
             hud_lines = [

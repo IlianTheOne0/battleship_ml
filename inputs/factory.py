@@ -22,5 +22,9 @@ class InputStrategyFactory:
             except FileNotFoundError as exception:
                 raise RuntimeError(f"No gesture model artifacts found: {exception}. First train the model") from exception
 
-        if config.INPUT_MODE is InputMode.VOICE: raise NotImplementedError("The voice mode is not implemented yet")
+        if config.INPUT_MODE is InputMode.VOICE:
+            from inputs.voice_input import VoiceInputStrategy
+
+            return VoiceInputStrategy(config=config, view=view, game=game)
+
         raise ValueError(f"Unknown input mode: {config.INPUT_MODE!r}")

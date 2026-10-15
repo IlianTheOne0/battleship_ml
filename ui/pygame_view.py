@@ -9,8 +9,7 @@ from config import Config, InputMode
 from game.cell import CellState
 from game.game_state import GamePhase
 
-if TYPE_CHECKING:
-    from game.battleship import BattleshipGame
+if TYPE_CHECKING: from game.battleship import BattleshipGame
 
 _COORD_LETTERS = "ABCDEFGHIJ"
 
@@ -167,7 +166,7 @@ class PygameView:
 
     def _build_controls_hint(self, mode: InputMode) -> str:
         if mode is InputMode.GESTURE: return ("Gestures: palm moves the cursor | index finger - confirm | fist - shoot | two fingers (victory) - rotate | thumb up - OK")
-        if mode is InputMode.VOICE: return "NOT IMPLEMENTED YET"
+        if mode is InputMode.VOICE: return ("Voice: say a coordinate (e.g. 'A5', 'F7') | 'fire' | 'confirm' | 'rotate' | 'quit'")
         return ("Keyboard: ← → ↑ ↓ to move | R to rotate | Enter to place | Space: Shoot | Q: Exit")
 
     def _draw_hud(self, game: "BattleshipGame") -> None:

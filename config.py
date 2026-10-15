@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 from enum import Enum
 from typing import ClassVar
+from pathlib import Path
 
 class InputMode(str, Enum):
     KEYBOARD = "keyboard"
@@ -12,7 +13,6 @@ class InputMode(str, Enum):
 class GameMode(str, Enum):
     HUMAN_VS_AI = "human_vs_ai"
     HUMAN_VS_HUMAN = "human_vs_human"
-
 
 class SingletonMeta(type):
     _instances: ClassVar[dict[type, object]] = {}
@@ -25,8 +25,8 @@ class Config(metaclass=SingletonMeta):
     BOARD_SIZE: int = 10
     FLEET: tuple[int, ...] = (4, 3, 3, 2, 2, 2, 1, 1, 1, 1)
 
-    GAME_MODE: GameMode = GameMode.HUMAN_VS_AI
-    INPUT_MODE: InputMode = InputMode.KEYBOARD
+    GAME_MODE: GameMode = GameMode.HUMAN_VS_HUMAN
+    INPUT_MODE: InputMode = InputMode.VOICE
 
     RANDOM_SEED: int = 873912
 
@@ -96,3 +96,15 @@ class Config(metaclass=SingletonMeta):
     GESTURE_CURSOR_DEADZONE: float = 0.04
     GESTURE_CURSOR_X_RANGE: tuple[float, float] = (0.15, 0.85)
     GESTURE_CURSOR_Y_RANGE: tuple[float, float] = (0.15, 0.85)
+
+    VOICE_LANGUAGE: str = "en-US"
+    VOICE_COOLDOWN_MS: int = 800
+
+    VOICE_VOSK_MODEL_PATH: str = str(Path(__file__).resolve().parent / "models" / "vosk-model-en-us-0.22-lgraph")
+    VOICE_VOSK_SAMPLE_RATE: int = 16000
+
+    VOICE_TTS_ENABLED: bool = True
+    VOICE_TTS_RATE: int = 160
+    VOICE_TTS_VOLUME: float = 1.0
+
+    VOICE_TURN_REMINDER_SECONDS: int = 30
